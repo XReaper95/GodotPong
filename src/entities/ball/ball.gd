@@ -6,7 +6,7 @@ signal wall_collision
 export var initial_arc = 40
 export var speed = 400
 
-onready var initial_pos = transform
+onready var initial_pos = position
 onready var vel = Vector2.ZERO
 onready var frozen = true
 
@@ -24,10 +24,10 @@ func get_random_direction():
 	return deg2rad(random_angle)
 
 
-func reset_pos():
+func reset():
 	vel = Vector2.ZERO
 	frozen = true
-	transform = initial_pos
+	position = initial_pos
 
 
 func _ready():
@@ -53,3 +53,15 @@ func _on_Game_ball_rolling():
 		vel.x = speed * cos(direction)
 		vel.y = speed * sin(direction)
 		frozen = false
+
+
+func _on_Game_won(_player_name):
+	frozen = true
+
+
+func _on_Game_reseted():
+	reset()
+
+
+func _on_Game_ball_reseted():
+	reset()

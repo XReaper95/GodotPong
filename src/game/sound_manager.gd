@@ -7,21 +7,20 @@ onready var paddle_collision_sound = $PaddleCollision
 onready var wall_collision_sound= $WallCollision
 
 
-func stop_playing(audio):
-	audio.stream_paused = true
-	audio.stop()
+func stop_playing(audio: AudioStreamPlayer):
+	if audio.playing:
+		audio.stop()
 
 
 func _on_Game_ball_rolling():
 	start_game_sound.play()
 
 
-func _on_Goal_body_entered(_body):
-		score_sound.play()
+func _on_Game_scored():
+	score_sound.play()
 
 
-func _on_Game_won(player_name):
-	stop_playing(score_sound)
+func _on_Game_won(_player_name):
 	game_won_sound.play()
 	
 	
@@ -31,3 +30,7 @@ func _on_Ball_paddle_collision():
 
 func _on_Ball_wall_collision():
 	wall_collision_sound.play()
+
+
+func _on_Game_reseted():
+	stop_playing(game_won_sound)

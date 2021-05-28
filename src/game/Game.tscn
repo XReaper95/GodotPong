@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=2]
+[gd_scene load_steps=25 format=2]
 
 [ext_resource path="res://src/game/game.gd" type="Script" id=1]
 [ext_resource path="res://resources/game_field.png" type="Texture" id=2]
@@ -12,18 +12,19 @@
 [ext_resource path="res://resources/referee_whistle.wav" type="AudioStream" id=10]
 [ext_resource path="res://resources/game_won_clapping.wav" type="AudioStream" id=11]
 [ext_resource path="res://src/game/sound_manager.gd" type="Script" id=12]
+[ext_resource path="res://src/data/player_data.tres" type="Resource" id=13]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 800.02, -1.4946 )
 b = Vector2( 0.0597827, -1.376 )
 
 [sub_resource type="SegmentShape2D" id=2]
-a = Vector2( -2.00319, 0.03125 )
-b = Vector2( -1.95018, 602.983 )
+a = Vector2( 5.27807, 0.0275146 )
+b = Vector2( 4.89379, 600.215 )
 
 [sub_resource type="SegmentShape2D" id=3]
-a = Vector2( 801.573, 602.993 )
-b = Vector2( 801.547, -0.0377316 )
+a = Vector2( 801.214, 590.181 )
+b = Vector2( 800.682, -10.0162 )
 
 [sub_resource type="SegmentShape2D" id=4]
 a = Vector2( 0.0328365, 601.456 )
@@ -70,9 +71,10 @@ font_data = ExtResource( 4 )
 
 [node name="Game" type="Node"]
 script = ExtResource( 1 )
+player_data = ExtResource( 13 )
 
 [node name="BallTimer" type="Timer" parent="."]
-wait_time = 1.485
+wait_time = 1.53
 one_shot = true
 
 [node name="SoundManager" type="Node" parent="."]
@@ -95,13 +97,16 @@ stream = ExtResource( 9 )
 
 [node name="Field" type="Node2D" parent="."]
 __meta__ = {
-"_edit_group_": true,
 "_edit_lock_": true
 }
 
 [node name="Background" type="TextureRect" parent="Field"]
 anchor_right = 1.0
 anchor_bottom = 1.0
+margin_left = -4.31281
+margin_top = -1.41422
+margin_right = 795.687
+margin_bottom = 598.586
 texture = ExtResource( 2 )
 __meta__ = {
 "_edit_use_anchors_": false
@@ -110,14 +115,17 @@ __meta__ = {
 [node name="TopWall" type="StaticBody2D" parent="Field" groups=[
 "wall",
 ]]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/TopWall"]
 shape = SubResource( 1 )
 
 [node name="LeftGoal" type="Area2D" parent="Field"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/LeftGoal"]
-position = Vector2( 0.471937, 0 )
+position = Vector2( 3.51656, -0.234504 )
 shape = SubResource( 2 )
 
 [node name="PlayerRight" parent="Field" instance=ExtResource( 3 )]
@@ -137,13 +145,17 @@ position = Vector2( 30.339, 301.014 )
 z_index = 1
 
 [node name="RightGoal" type="Area2D" parent="Field"]
+collision_layer = 2
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/RightGoal"]
+position = Vector2( -9.39136, 9.96639 )
 shape = SubResource( 3 )
 
 [node name="BottomWall" type="StaticBody2D" parent="Field" groups=[
 "wall",
 ]]
+collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/BottomWall"]
 shape = SubResource( 4 )
@@ -153,9 +165,12 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 script = ExtResource( 6 )
 __meta__ = {
-"_edit_lock_": true
+"_edit_group_": true,
+"_edit_lock_": true,
+"_edit_use_anchors_": false
 }
-game_begin_text = "Press SPACE to lauch the ball"
+player_data = ExtResource( 13 )
+game_begin_text = "Press SPACE to launch the ball"
 reset_text = "Press SPACE to reset game or ESCAPE to exit"
 
 [node name="HTopContainer" type="HBoxContainer" parent="UI"]
@@ -269,15 +284,24 @@ custom_colors/font_color = Color( 1, 1, 1, 0.54902 )
 text = "PLACEHOLDER PLACEHOLDER"
 align = 1
 
-[connection signal="ball_rolling" from="." to="SoundManager" method="_on_Game_ball_rolling"]
-[connection signal="ball_rolling" from="." to="Field/Ball" method="_on_Game_ball_rolling"]
+[connection signal="ball_reseted" from="." to="Field/Ball" method="_on_Game_ball_reseted"]
 [connection signal="ball_rolling" from="." to="UI" method="_on_Game_ball_rolling"]
-[connection signal="won" from="." to="SoundManager" method="_on_Game_won"]
+[connection signal="ball_rolling" from="." to="Field/Ball" method="_on_Game_ball_rolling"]
+[connection signal="ball_rolling" from="." to="SoundManager" method="_on_Game_ball_rolling"]
+[connection signal="reseted" from="." to="UI" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/PlayerRight" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/PlayerLeft" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="SoundManager" method="_on_Game_reseted"]
+[connection signal="score_changed" from="." to="UI" method="_on_Game_score_changed"]
+[connection signal="scored" from="." to="SoundManager" method="_on_Game_scored"]
 [connection signal="won" from="." to="UI" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/PlayerRight" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/PlayerLeft" method="_on_Game_won"]
+[connection signal="won" from="." to="SoundManager" method="_on_Game_won"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_BallTimer_timeout"]
-[connection signal="body_entered" from="Field/LeftGoal" to="SoundManager" method="_on_Goal_body_entered"]
 [connection signal="body_entered" from="Field/LeftGoal" to="." method="_on_LeftGoal_body_entered"]
 [connection signal="paddle_collision" from="Field/Ball" to="SoundManager" method="_on_Ball_paddle_collision"]
 [connection signal="wall_collision" from="Field/Ball" to="SoundManager" method="_on_Ball_wall_collision"]
-[connection signal="body_entered" from="Field/RightGoal" to="SoundManager" method="_on_Goal_body_entered"]
 [connection signal="body_entered" from="Field/RightGoal" to="." method="_on_RightGoal_body_entered"]
