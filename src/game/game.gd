@@ -51,15 +51,21 @@ func process_score(score, name):
 	return score
 
 
+func roll_ball():
+	is_ball_rolling = true
+	emit_signal("ball_rolling")
+
+
 func _process(_delta):
 	if Input.is_action_just_pressed("game_run") and \
 		not is_ball_rolling and not is_game_ended:
-			
-		is_ball_rolling = true
-		emit_signal("ball_rolling")
+			roll_ball()
 	
 	if Input.is_action_just_pressed("game_run") and is_game_ended:
 		reset()
+		
+	if Input.is_action_just_pressed("game_exit"):
+		get_tree().quit()
 
 
 func _on_LeftGoal_body_entered(_body):
