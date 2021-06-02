@@ -168,7 +168,7 @@ script = ExtResource( 6 )
 __meta__ = {
 "_edit_group_": true,
 "_edit_lock_": true,
-"_edit_use_anchors_": false
+"_edit_use_anchors_": true
 }
 player_data = ExtResource( 13 )
 game_begin_text = "Press SPACE to launch the ball"
@@ -301,16 +301,16 @@ __meta__ = {
 [connection signal="ball_rolling" from="." to="Field/Ball" method="_on_Game_ball_rolling"]
 [connection signal="ball_rolling" from="." to="SoundManager" method="_on_Game_ball_rolling"]
 [connection signal="reseted" from="." to="UI" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/PlayerRight" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
 [connection signal="reseted" from="." to="Field/PlayerLeft" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/PlayerRight" method="_on_Game_reseted"]
 [connection signal="reseted" from="." to="SoundManager" method="_on_Game_reseted"]
 [connection signal="score_changed" from="." to="UI" method="_on_Game_score_changed"]
 [connection signal="scored" from="." to="SoundManager" method="_on_Game_scored"]
 [connection signal="won" from="." to="UI" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/PlayerRight" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
 [connection signal="won" from="." to="Field/PlayerLeft" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/PlayerRight" method="_on_Game_won"]
 [connection signal="won" from="." to="SoundManager" method="_on_Game_won"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_BallTimer_timeout"]
 [connection signal="body_entered" from="Field/LeftGoal" to="." method="_on_LeftGoal_body_entered"]
