@@ -288,7 +288,6 @@ align = 1
 [node name="ShaderLayer" type="CanvasLayer" parent="."]
 
 [node name="CRTShader" type="ColorRect" parent="ShaderLayer"]
-visible = false
 material = ExtResource( 14 )
 anchor_right = 1.0
 anchor_bottom = 1.0
