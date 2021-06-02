@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=2]
+[gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/game/game.gd" type="Script" id=1]
 [ext_resource path="res://resources/game_field.png" type="Texture" id=2]
@@ -13,6 +13,7 @@
 [ext_resource path="res://resources/game_won_clapping.wav" type="AudioStream" id=11]
 [ext_resource path="res://src/game/sound_manager.gd" type="Script" id=12]
 [ext_resource path="res://src/data/player_data.tres" type="Resource" id=13]
+[ext_resource path="res://src/data/crt_material.tres" type="Material" id=14]
 
 [sub_resource type="SegmentShape2D" id=1]
 a = Vector2( 800.02, -1.4946 )
@@ -284,21 +285,32 @@ custom_colors/font_color = Color( 1, 1, 1, 0.54902 )
 text = "PLACEHOLDER PLACEHOLDER"
 align = 1
 
+[node name="ShaderLayer" type="CanvasLayer" parent="."]
+
+[node name="CRTShader" type="ColorRect" parent="ShaderLayer"]
+visible = false
+material = ExtResource( 14 )
+anchor_right = 1.0
+anchor_bottom = 1.0
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
 [connection signal="ball_reseted" from="." to="Field/Ball" method="_on_Game_ball_reseted"]
 [connection signal="ball_rolling" from="." to="UI" method="_on_Game_ball_rolling"]
 [connection signal="ball_rolling" from="." to="Field/Ball" method="_on_Game_ball_rolling"]
 [connection signal="ball_rolling" from="." to="SoundManager" method="_on_Game_ball_rolling"]
 [connection signal="reseted" from="." to="UI" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/PlayerLeft" method="_on_Game_reseted"]
 [connection signal="reseted" from="." to="Field/PlayerRight" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/PlayerLeft" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
 [connection signal="reseted" from="." to="SoundManager" method="_on_Game_reseted"]
 [connection signal="score_changed" from="." to="UI" method="_on_Game_score_changed"]
 [connection signal="scored" from="." to="SoundManager" method="_on_Game_scored"]
 [connection signal="won" from="." to="UI" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/PlayerLeft" method="_on_Game_won"]
 [connection signal="won" from="." to="Field/PlayerRight" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/PlayerLeft" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
 [connection signal="won" from="." to="SoundManager" method="_on_Game_won"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_BallTimer_timeout"]
 [connection signal="body_entered" from="Field/LeftGoal" to="." method="_on_LeftGoal_body_entered"]

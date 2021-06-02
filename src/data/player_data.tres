@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource( 1 )
-max_score = 5
+max_score = 2
 left_player_name = "XReaper"
 right_player_name = "Other"
