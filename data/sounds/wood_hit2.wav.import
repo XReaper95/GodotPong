@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/border_hit.wav-41ca541c7d3617ed1a72a941a9ed7453.sample"
+path="res://.import/wood_hit2.wav-7c1b3c18a8c99f29b8392ef487acf527.sample"
 
 [deps]
 
-source_file="res://resources/border_hit.wav"
-dest_files=[ "res://.import/border_hit.wav-41ca541c7d3617ed1a72a941a9ed7453.sample" ]
+source_file="res://data/sounds/wood_hit2.wav"
+dest_files=[ "res://.import/wood_hit2.wav-7c1b3c18a8c99f29b8392ef487acf527.sample" ]
 
 [params]
 

@@ -1,0 +1,21 @@
+[remap]
+
+importer="wav"
+type="AudioStreamSample"
+path="res://.import/game_won_clapping.wav-03f8e909fdc239d8e63663d408a3ef42.sample"
+
+[deps]
+
+source_file="res://data/sounds/game_won_clapping.wav"
+dest_files=[ "res://.import/game_won_clapping.wav-03f8e909fdc239d8e63663d408a3ef42.sample" ]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop=false
+compress/mode=0

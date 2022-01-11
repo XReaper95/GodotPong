@@ -2,12 +2,12 @@
 
 importer="wav"
 type="AudioStreamSample"
-path="res://.import/score.wav-a9999a25241a4291a42283c433b2b523.sample"
+path="res://.import/border_hit.wav-d9978974a88b957fc3cc973ce38f8de8.sample"
 
 [deps]
 
-source_file="res://resources/score.wav"
-dest_files=[ "res://.import/score.wav-a9999a25241a4291a42283c433b2b523.sample" ]
+source_file="res://data/sounds/border_hit.wav"
+dest_files=[ "res://.import/border_hit.wav-d9978974a88b957fc3cc973ce38f8de8.sample" ]
 
 [params]
 

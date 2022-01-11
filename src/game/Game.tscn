@@ -1,16 +1,16 @@
 [gd_scene load_steps=26 format=2]
 
 [ext_resource path="res://src/game/game.gd" type="Script" id=1]
-[ext_resource path="res://resources/game_field.png" type="Texture" id=2]
+[ext_resource path="res://data/images/game_field.png" type="Texture" id=2]
 [ext_resource path="res://src/entities/player/Player.tscn" type="PackedScene" id=3]
-[ext_resource path="res://resources/Acme 9 Regular.ttf" type="DynamicFontData" id=4]
+[ext_resource path="res://data/fonts/Acme 9 Regular.ttf" type="DynamicFontData" id=4]
 [ext_resource path="res://src/entities/ball/Ball.tscn" type="PackedScene" id=5]
 [ext_resource path="res://src/game/ui.gd" type="Script" id=6]
-[ext_resource path="res://resources/wood_hit2.wav" type="AudioStream" id=7]
-[ext_resource path="res://resources/score.wav" type="AudioStream" id=8]
-[ext_resource path="res://resources/border_hit.wav" type="AudioStream" id=9]
-[ext_resource path="res://resources/referee_whistle.wav" type="AudioStream" id=10]
-[ext_resource path="res://resources/game_won_clapping.wav" type="AudioStream" id=11]
+[ext_resource path="res://data/sounds/wood_hit2.wav" type="AudioStream" id=7]
+[ext_resource path="res://data/sounds/score.wav" type="AudioStream" id=8]
+[ext_resource path="res://data/sounds/border_hit.wav" type="AudioStream" id=9]
+[ext_resource path="res://data/sounds/referee_whistle.wav" type="AudioStream" id=10]
+[ext_resource path="res://data/sounds/game_won_clapping.wav" type="AudioStream" id=11]
 [ext_resource path="res://src/game/sound_manager.gd" type="Script" id=12]
 [ext_resource path="res://src/data/player_data.tres" type="Resource" id=13]
 [ext_resource path="res://src/data/crt_material.tres" type="Material" id=14]
@@ -113,9 +113,7 @@ __meta__ = {
 "_edit_use_anchors_": false
 }
 
-[node name="TopWall" type="StaticBody2D" parent="Field" groups=[
-"wall",
-]]
+[node name="TopWall" type="StaticBody2D" parent="Field" groups=["wall"]]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/TopWall"]
@@ -153,9 +151,7 @@ collision_mask = 0
 position = Vector2( -9.39136, 9.96639 )
 shape = SubResource( 3 )
 
-[node name="BottomWall" type="StaticBody2D" parent="Field" groups=[
-"wall",
-]]
+[node name="BottomWall" type="StaticBody2D" parent="Field" groups=["wall"]]
 collision_mask = 0
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Field/BottomWall"]
@@ -197,8 +193,8 @@ alignment = 1
 [node name="PlayerName" type="Label" parent="UI/HTopContainer/LeftPlayerMargin/PlayerBoard"]
 margin_right = 300.0
 margin_bottom = 71.0
-custom_fonts/font = SubResource( 5 )
 custom_colors/font_color = Color( 0, 0.47451, 0.945098, 1 )
+custom_fonts/font = SubResource( 5 )
 text = "Player 1"
 align = 1
 
@@ -206,8 +202,8 @@ align = 1
 margin_top = 50.0
 margin_right = 300.0
 margin_bottom = 151.0
-custom_fonts/font = SubResource( 6 )
 custom_colors/font_color = Color( 0, 0.47451, 0.945098, 1 )
+custom_fonts/font = SubResource( 6 )
 text = "0"
 align = 1
 
@@ -242,8 +238,8 @@ alignment = 1
 [node name="PlayerName" type="Label" parent="UI/HTopContainer/RightPlayerMargin/PlayerBoard"]
 margin_right = 301.0
 margin_bottom = 71.0
-custom_fonts/font = SubResource( 8 )
 custom_colors/font_color = Color( 0.901961, 0.160784, 0.215686, 1 )
+custom_fonts/font = SubResource( 8 )
 text = "Player 2"
 align = 1
 
@@ -251,8 +247,8 @@ align = 1
 margin_top = 50.0
 margin_right = 301.0
 margin_bottom = 151.0
-custom_fonts/font = SubResource( 9 )
 custom_colors/font_color = Color( 0.901961, 0.160784, 0.215686, 1 )
+custom_fonts/font = SubResource( 9 )
 text = "0"
 align = 1
 
@@ -280,8 +276,8 @@ custom_constants/margin_top = 143
 margin_top = 218.0
 margin_right = 800.0
 margin_bottom = 261.0
-custom_fonts/font = SubResource( 11 )
 custom_colors/font_color = Color( 1, 1, 1, 0.54902 )
+custom_fonts/font = SubResource( 11 )
 text = "PLACEHOLDER PLACEHOLDER"
 align = 1
 
@@ -297,21 +293,21 @@ __meta__ = {
 }
 
 [connection signal="ball_reseted" from="." to="Field/Ball" method="_on_Game_ball_reseted"]
-[connection signal="ball_rolling" from="." to="UI" method="_on_Game_ball_rolling"]
-[connection signal="ball_rolling" from="." to="Field/Ball" method="_on_Game_ball_rolling"]
 [connection signal="ball_rolling" from="." to="SoundManager" method="_on_Game_ball_rolling"]
-[connection signal="reseted" from="." to="UI" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/PlayerLeft" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
-[connection signal="reseted" from="." to="Field/PlayerRight" method="_on_Game_reseted"]
+[connection signal="ball_rolling" from="." to="Field/Ball" method="_on_Game_ball_rolling"]
+[connection signal="ball_rolling" from="." to="UI" method="_on_Game_ball_rolling"]
 [connection signal="reseted" from="." to="SoundManager" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/PlayerRight" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/Ball" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="Field/PlayerLeft" method="_on_Game_reseted"]
+[connection signal="reseted" from="." to="UI" method="_on_Game_reseted"]
 [connection signal="score_changed" from="." to="UI" method="_on_Game_score_changed"]
 [connection signal="scored" from="." to="SoundManager" method="_on_Game_scored"]
-[connection signal="won" from="." to="UI" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/PlayerLeft" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
-[connection signal="won" from="." to="Field/PlayerRight" method="_on_Game_won"]
 [connection signal="won" from="." to="SoundManager" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/PlayerRight" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/Ball" method="_on_Game_won"]
+[connection signal="won" from="." to="Field/PlayerLeft" method="_on_Game_won"]
+[connection signal="won" from="." to="UI" method="_on_Game_won"]
 [connection signal="timeout" from="BallTimer" to="." method="_on_BallTimer_timeout"]
 [connection signal="body_entered" from="Field/LeftGoal" to="." method="_on_LeftGoal_body_entered"]
 [connection signal="paddle_collision" from="Field/Ball" to="SoundManager" method="_on_Ball_paddle_collision"]

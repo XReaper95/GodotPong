@@ -2,15 +2,15 @@
 
 importer="texture"
 type="StreamTexture"
-path="res://.import/paddle.png-5c6d7ad999b0198a1ca074eb17957c7b.stex"
+path="res://.import/icon.png-dcdbf59a271cc413b62700dd9f70b220.stex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://resources/paddle.png"
-dest_files=[ "res://.import/paddle.png-5c6d7ad999b0198a1ca074eb17957c7b.stex" ]
+source_file="res://data/icons/icon.png"
+dest_files=[ "res://.import/icon.png-dcdbf59a271cc413b62700dd9f70b220.stex" ]
 
 [params]
 
@@ -28,6 +28,7 @@ process/fix_alpha_border=true
 process/premult_alpha=false
 process/HDR_as_SRGB=false
 process/invert_color=false
+process/normal_map_invert_y=false
 stream=false
 size_limit=0
 detect_3d=true

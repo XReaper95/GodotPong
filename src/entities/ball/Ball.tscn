@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=2]
 
-[ext_resource path="res://resources/ball.png" type="Texture" id=1]
+[ext_resource path="res://data/images/ball.png" type="Texture" id=1]
 [ext_resource path="res://src/entities/ball/ball.gd" type="Script" id=4]
 
 [sub_resource type="CircleShape2D" id=1]
