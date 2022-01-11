@@ -13,9 +13,15 @@ _global_script_classes=[ {
 "class": "PlayerData",
 "language": "GDScript",
 "path": "res://src/data/player_data.gd"
+}, {
+"base": "Node2D",
+"class": "RandomDirectionProvider",
+"language": "GDScript",
+"path": "res://src/ball/random_direction_provider.gd"
 } ]
 _global_script_class_icons={
-"PlayerData": ""
+"PlayerData": "",
+"RandomDirectionProvider": ""
 }
 
 [MonoCustomResourceRegistry]
